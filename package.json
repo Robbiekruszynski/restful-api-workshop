@@ -1,0 +1,23 @@
+{
+  "name": "restful-api-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robbiekruszynski/restful-api-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robbiekruszynski/restful-api-workshop/issues"
+  },
+  "homepage": "https://github.com/Robbiekruszynski/restful-api-workshop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
+}
