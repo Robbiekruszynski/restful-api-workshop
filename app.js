@@ -6,10 +6,12 @@ const mongoose = require("mongoose");
 
 require("dotenv/config");
 
+////////Import Routes ////////
+const postsRoute = require("./routes/posts");
+
 ////////Middleware//////// = function that executes when routes are being hit
-app.use("/posts", () => {
-  console.log("hello this is middleware running");
-});
+
+app.use("/posts", postsRoute);
 
 ////////ROUTES////////
 
@@ -17,12 +19,7 @@ app.use("/posts", () => {
 //if I wanted to do a submit (like a form I would instead of get use post)
 //there is also delete and post to add after app
 app.get("/", (req, res) => {
-  res.send("we are on our way, this is the home area!");
-});
-
-//always make sure to make the route call with a /
-app.get("/posts", (req, res) => {
-  res.send("we are on our way, this is the post area!");
+  res.send("this is the home area!");
 });
 
 //////connect to DB via hardcode
@@ -30,7 +27,7 @@ mongoose.connect(
   //////connect to DB via hardcode
   process.env.DB_CONNECTION,
   //the next line is to kill the depreactionwarning
-  { userNewUrlParser: true },
+  { useNewUrlParser: true },
   () => console.log("connected to DataBase")
 );
 
