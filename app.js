@@ -1,38 +1,26 @@
 const express = require("express");
-
 const app = express();
-
 const mongoose = require("mongoose");
-
 const bodyParser = require("body-parser");
-
 require("dotenv/config");
+//function that executes when routes are being hit
+// app.use("/posts", () => {
+//   console.log("this is middleware running");
+// });
 
-////////Import Routes ////////
+app.use(bodyParser.json());
+
+//import routes
 const postsRoute = require("./routes/posts");
 
-////////Middleware//////// = function that executes when routes are being hit
-app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 
-////////ROUTES////////
-
-//get shoots back a message
-//if I wanted to do a submit (like a form I would instead of get use post)
-//there is also delete and post to add after app
+//ROUTES
 app.get("/", (req, res) => {
-  res.send("this is the home area!");
+  res.send("This is the home page");
 });
 
-//////connect to DB via hardcode
-mongoose.connect(
-  //////connect to DB via hardcode
-  process.env.DB_CONNECTION,
-  //the next line is to kill the depreactionwarning
-  { useNewUrlParser: true },
-  () => console.log("connected to DataBase")
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
+  console.log("connected to the DB")
 );
-
-//start listening to the server
-//what you use in the arg will be where it ro
-app.listen(3001);
+app.listen(3005);
