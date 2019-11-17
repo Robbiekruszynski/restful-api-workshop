@@ -34,5 +34,5 @@ mongoose.connect(
 );
 
 //start listening to the server
-//what you use in the arg will be where it routes to i.e. port 3000 etc...
+//what you use in the arg will be where it ro
 app.listen(3001);
