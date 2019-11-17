@@ -4,13 +4,15 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+const bodyParser = require("body-parser");
+
 require("dotenv/config");
 
 ////////Import Routes ////////
 const postsRoute = require("./routes/posts");
 
 ////////Middleware//////// = function that executes when routes are being hit
-
+app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 
 ////////ROUTES////////
