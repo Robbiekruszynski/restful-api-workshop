@@ -30,9 +30,39 @@ router.post("/", async (req, res) => {
   }
 });
 
+//dig deeper into try / catch logic
+
 //specific post
 router.get("/:postId", async (req, res) => {
-  const post = await Post.findById(req.params.postId);
+  try {
+    const post = await Post.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({ message: er });
+  }
+});
+
+//delete posts
+router.delete("/:postId", async (req, res) => {
+  try {
+    const removedPost = await Post.remove({ _id: req.params.postId });
+    res.json(removedPost);
+  } catch (err) {
+    res.json({ message: er });
+  }
+});
+
+//update a single post
+router.patch("/postId", async (req, res) => {
+  try {
+    const updatedPost = await Post.updateOne(
+      { _id: req.params.postId },
+      { $set: { title: req.body.title } }
+    );
+    res.json(updatedPost);
+  } catch (err) {
+    res.json({ message: er });
+  }
 });
 
 module.exports = router;
